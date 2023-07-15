@@ -7,7 +7,9 @@ import {
 } from '../../features/filters/filtersSlice';
 import { usePagination } from '../../hooks/usePagination';
 import { useProducts } from '../../hooks/useProducts';
+import Error from '../Error';
 import Filters from '../Filters';
+import Loading from '../Loading';
 import Pagination from '../Pagination';
 import ProductsList from '../ProductsList';
 
@@ -39,6 +41,14 @@ const ProductsGrid = () => {
   const handleClick = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
+  if (status === 'loading') {
+    return <Loading />;
+  }
+
+  if (status === 'failed') {
+    return <Error />;
+  }
 
   return (
     <div style={styles.productGrid}>
