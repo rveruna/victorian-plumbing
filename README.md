@@ -64,3 +64,6 @@ Example body schema for the provided POST endpoint:
 - Added Pagination component
 - Created usePagination custom hook
 - Added filtering by price
+
+<img width="1319" alt="solution_screenshot" src="https://github.com/rveruna/victorian-plumbing/assets/15161568/67663c04-068a-4429-ad49-e37591236453">
+
