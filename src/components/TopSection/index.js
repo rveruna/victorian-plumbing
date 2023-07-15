@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TopSection = () => {
+const TopSection = ({ filteredProducts }) => {
   return (
     <div style={styles.grid} aria-label='Filter section'>
       <h2 style={styles.heading}>Filter by</h2>
@@ -10,7 +10,7 @@ const TopSection = () => {
           <option value='reviews'>Review: high to low</option>
         </select>
         <div style={styles.results} aria-live='polite'>
-          100 results
+          {filteredProducts.length} results
         </div>
       </div>
     </div>
