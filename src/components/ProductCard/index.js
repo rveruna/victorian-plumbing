@@ -19,6 +19,14 @@ const ProductCard = ({ product }) => {
       <div style={styles.stockStatus}>
         {stockStatus.status === 'G' ? 'In Stock' : 'Out of Stock'}
       </div>
+      {averageRating && (
+        <div style={styles.ratingContainer}>
+          <div style={styles.starRating}>
+            <StarRating rating={averageRating} />
+            <div style={styles.reviewCount}>{reviewsCount}</div>
+          </div>
+        </div>
+      )}
     </a>
   );
 };
@@ -64,5 +72,22 @@ const styles = {
     borderRadius: 4,
     fontSize: 12,
     padding: 4,
+  },
+  ratingContainer: {
+    alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  reviewCount: {
+    color: 'darkgrey',
+    fontSize: 14,
+    position: 'absolute',
+    right: -20,
+  },
+  starRating: {
+    alignItems: 'center',
+    display: 'flex',
+    marginRight: 10,
+    position: 'relative',
   },
 };
