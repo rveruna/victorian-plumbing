@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Header from './components/Header';
+import ProductsGrid from './components/ProductsGrid';
+import TopSection from './components/TopSection';
 
-function App() {
+const App = () => {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={styles.app}>
+      <div style={styles.container}>
+        <Header />
+        <TopSection />
+        <ProductsGrid />
+      </div>
     </div>
   );
-}
+};
 
 export default App;
+
+const styles = {
+  app: {
+    backgroundColor: '#f2f0eb',
+    padding: '0 30px 30px',
+    textAlign: 'center',
+  },
+  container: {
+    maxWidth: 1200,
+    margin: '0 auto',
+  },
+};
