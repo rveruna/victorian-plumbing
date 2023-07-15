@@ -1,14 +1,24 @@
 import React from 'react';
+import StarRating from '../StarRating';
 
-const ProductCard = () => {
+const ProductCard = ({ product }) => {
+  const { averageRating, productName, price, stockStatus, reviewsCount } =
+    product;
+
   return (
     <a style={styles.card}>
-      <img src='src' alt='alt' style={styles.image} />
+      <img
+        src={product.image.url}
+        alt={product.image.attributes.imageAltText}
+        style={styles.image}
+      />
       <div style={styles.info}>
-        <h2 style={styles.name}>name</h2>
-        <div style={styles.price}>£99</div>
+        <h2 style={styles.name}>{productName}</h2>
+        <div style={styles.price}>£{price.priceIncTax}</div>
       </div>
-      <div style={styles.stockStatus}>In Stock</div>
+      <div style={styles.stockStatus}>
+        {stockStatus.status === 'G' ? 'In Stock' : 'Out of Stock'}
+      </div>
     </a>
   );
 };

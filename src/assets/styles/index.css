@@ -13,6 +13,15 @@ code {
     monospace;
 }
 
+li a:hover,
+li a:focus {
+  background-color: darkgrey !important;
+  color: white !important;
+}
+
+li:last-child {
+  margin-right: 0 !important;
+}
 /* Media query for screens under 950px */
 @media (max-width: 1020px) {
   main {

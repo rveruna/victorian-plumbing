@@ -1,16 +1,61 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  selectPriceRange,
+  setPriceRange,
+  setFilteredProducts,
+} from '../../features/filters/filtersSlice';
+import { usePagination } from '../../hooks/usePagination';
+import { useProducts } from '../../hooks/useProducts';
 import Filters from '../Filters';
+import Pagination from '../Pagination';
 import ProductsList from '../ProductsList';
 
 const ProductsGrid = () => {
+  const itemsPerPage = 10;
+  const dispatch = useDispatch();
+  const priceRange = useSelector(selectPriceRange);
+
+  const { filteredProducts, status } = useProducts(priceRange);
+
+  const {
+    currentPage,
+    totalPages,
+    paginatedItems: paginatedProducts,
+    setCurrentPage,
+  } = usePagination(filteredProducts, itemsPerPage);
+
+  const handlePriceRangeChange = (event) => {
+    const { name, checked } = event.target;
+    const [min, max] = name.split('-');
+    if (checked) {
+      dispatch(setPriceRange({ min: Number(min), max: Number(max) }));
+    } else {
+      dispatch(setPriceRange({ min: null, max: null }));
+      dispatch(setFilteredProducts([]));
+    }
+  };
+
+  const handleClick = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
   return (
     <div style={styles.productGrid}>
       <aside style={styles.leftColumn}>
-        <Filters />
+        <Filters
+          priceRange={priceRange}
+          handlePriceRangeChange={handlePriceRangeChange}
+        />
       </aside>
       <main style={styles.rightColumn}>
-        <ProductsList />
+        <ProductsList products={paginatedProducts} />
       </main>
+      <Pagination
+        totalPages={totalPages}
+        handleClick={handleClick}
+        currentPage={currentPage}
+      />
     </div>
   );
 };
