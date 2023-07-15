@@ -48,3 +48,19 @@ Example body schema for the provided POST endpoint:
 - 2 = PriceLowToHight
 - 3 = PriceHighToLow
 - 4 = LargestDiscount
+
+## Solution
+
+- Created easily readable structure
+- Added Victorian Plumbing logo as a header
+- Added Redux Store for state management
+- Added filters and products reducers
+- Used Grid and Flex for responsive layout
+- Fetched the data using RTK thunk
+- Displayed the images, name, prices of products in the cards
+- Created useProduct custom hook
+- Displayed star ratings
+- Added Error, Loading components
+- Added Pagination component
+- Created usePagination custom hook
+- Added filtering by price
